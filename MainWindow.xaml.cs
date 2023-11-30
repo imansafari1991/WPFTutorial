@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -21,8 +22,48 @@ namespace WPFTutorial
 			InitializeComponent();
 		}
 
-		private void btnFire_Click(object sender, RoutedEventArgs e)
+		private void btnAdd_Click(object sender, RoutedEventArgs e)
 		{
+
+			if(!string.IsNullOrWhiteSpace(txtEntry.Text))
+			{
+				lvEntries.Items.Add(txtEntry.Text);
+				txtEntry.Clear();
+			}
+		}
+		private void btnAdd_mouseEnter(object sender, RoutedEventArgs e)
+		{
+			btnAdd.FontWeight = FontWeights.Bold;
+		}
+		private void btnAdd_mouseLeave(object sender, RoutedEventArgs e)
+		{
+			btnAdd.FontWeight = FontWeights.Medium;
+		}
+
+		private void btnDelete_Click(object sender, RoutedEventArgs e)
+		{
+			int index = lvEntries.SelectedIndex;
+			//object item = lvEntries.SelectedItem;
+			//var result = MessageBox.Show($"Are you sure you want to delete:{(string)item}?", "Sure?",
+			//	MessageBoxButton.YesNo);
+			//if (result == MessageBoxResult.Yes)
+			//{
+			//	lvEntries.Items.Remove(item);
+			//}
+			
+			var items = lvEntries.SelectedItems;
+			var result = MessageBox.Show($"Are you sure you want to delete:{items.Count}?", "Sure?",
+				MessageBoxButton.YesNo);
+			if (result == MessageBoxResult.Yes)
+			{
+				var itemsList = new ArrayList(items);
+				foreach (var item in itemsList)
+				{
+					lvEntries.Items.Remove(item);
+				}
+
+				
+			}
 
 		}
 	}
