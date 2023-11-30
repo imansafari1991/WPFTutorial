@@ -23,7 +23,13 @@ namespace WPFTutorial
 
 		private void btnFire_Click(object sender, RoutedEventArgs e)
 		{
-
+			FolderBrowserDialog dialog = new FolderBrowserDialog();
+			dialog.InitialDirectory = "C:\\";
+			DialogResult result = dialog.ShowDialog();
+			if (result==System.Windows.Forms.DialogResult.OK)
+			{
+				string folder=dialog.SelectedPath;
+			}
 		}
 	}
 }
