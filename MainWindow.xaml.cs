@@ -23,7 +23,8 @@ namespace WPFTutorial
 
 		private void btnFire_Click(object sender, RoutedEventArgs e)
 		{
-
+			FolderBrowserDialog dialog = new FolderBrowserDialog();
+			dialog.ShowDialog();
 		}
 	}
 }
