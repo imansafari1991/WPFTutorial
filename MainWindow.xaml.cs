@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace WPFTutorial
 {
@@ -23,19 +24,23 @@ namespace WPFTutorial
 
 		private void btnFire_Click(object sender, RoutedEventArgs e)
 		{
-			//MessageBox.Show("Could Not Open File ...", "ERROR!", MessageBoxButton.OK, MessageBoxImage.Error);
-			MessageBoxResult result = MessageBox.Show("Do you agree ?", "Agreement", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-			if (result == MessageBoxResult.Yes)
+			OpenFileDialog fileDialog=new OpenFileDialog();
+			fileDialog.Filter = "Image | *.webp";
+			fileDialog.InitialDirectory = "C:\\Temp";
+			fileDialog.Title = "Please pick Image files ...";
+			fileDialog.Multiselect = true;
+			bool? success=fileDialog.ShowDialog();
+			if (success == true)
 			{
-				tbInfo.Text = "Agreed";
+				string path=fileDialog.FileName;
+				string fileName=fileDialog.SafeFileName;
+				tbInfo.Text = fileName;
 			}
 
 			else
 			{
-				tbInfo.Text = "NotAgreed";
+				//didnt pick anything
 			}
-
 
 		}
 	}
