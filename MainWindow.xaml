@@ -5,13 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFTutorial"
         mc:Ignorable="d"
-        Title="MainWindow" Height="250" Width="300">
+        Title="MainWindow" Height="400" Width="400">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="75" />
             <RowDefinition/>
-          
         </Grid.RowDefinitions>
-        <Button Name="btnFire" Content="Fire" Width="100" Height="40" Background="Beige" Click="btnFire_Click"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Height="40" Width="75" Margin="2" Content="A"/>
+            <Button Height="40" Width="75" Margin="2" Content="B"/>
+            <Button Height="40" Width="75" Margin="2" Content="C"/>
+
+        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="20" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Label: "/>
+                <TextBlock Width="150"/>
+                <Button Content="Go"/>
+            </StackPanel>
+            <TextBox Width="150" Height="30" Margin="2"/>
+            <ComboBox Width="150" Height="30" Margin="2"/>
+            <TextBox Width="150" Height="30" Margin="2"/>
+            <TextBox Width="150" Height="30" Margin="2"/>
+            <TextBox Width="150" Height="30" Margin="2"/>
+            <TextBox Width="150" Height="30" Margin="2"/>
+            <TextBox Width="150" Height="30" Margin="2"/>
+        </StackPanel>
+
 
     </Grid>
 </Window>
